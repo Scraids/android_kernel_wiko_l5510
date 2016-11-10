@@ -3509,7 +3509,7 @@ static ssize_t als_adc_show(struct device *dev,
 	value = read_als_adc_value(ltr553);
 	input_report_abs(ltr553->als_input_dev, ABS_MISC, value);
 	input_sync(ltr553->als_input_dev);
-	ret = snprintf(buf, sizeof(buf), "%d", value);
+	ret = snprintf(buf, (int)sizeof(buf), "%d", value);
 
 	return ret;
 }
@@ -3527,7 +3527,7 @@ static ssize_t ps_adc_show(struct device *dev,
 	/*ltr553->mode = PS;*/
 	/*value = read_adc_value(ltr553);*/
 	value = read_ps_adc_value(ltr553);
-	ret = snprintf(buf, sizeof(buf), "%d", value);
+	ret = snprintf(buf, (int)sizeof(buf), "%d", value);
 
 	return ret;
 }
@@ -3556,7 +3556,7 @@ static ssize_t psadcsaturationBit_show(struct device *dev,
 	/*value = read_adc_value(ltr553);*/
 	saturation_bit = (value >> 15);
 	value &= PS_VALID_MEASURE_MASK;
-	ret = snprintf(buf, sizeof(buf), "%d %d\n", value, saturation_bit);
+	ret = snprintf(buf, (int)sizeof(buf), "%d %d\n", value, saturation_bit);
 
 	return ret;
 }
@@ -3767,7 +3767,7 @@ static ssize_t alsmodesetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -3812,7 +3812,7 @@ static ssize_t alsswresetsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -3858,7 +3858,7 @@ static ssize_t alsgainsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -3920,7 +3920,7 @@ static ssize_t alscontrsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -3999,7 +3999,7 @@ static ssize_t psmodesetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4044,7 +4044,7 @@ static ssize_t psgainsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4102,7 +4102,7 @@ static ssize_t pssatuindicasetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4147,7 +4147,7 @@ static ssize_t pscontrsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4224,7 +4224,7 @@ static ssize_t psledcurrsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 
@@ -4305,7 +4305,7 @@ static ssize_t psledcurrduty_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 
@@ -4377,7 +4377,7 @@ static ssize_t psledpulsefreqsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 
@@ -4449,7 +4449,7 @@ static ssize_t psledsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4526,7 +4526,7 @@ static ssize_t psledpulsecountsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4595,7 +4595,7 @@ static ssize_t psmeasratesetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 
@@ -4684,7 +4684,7 @@ static ssize_t alsmeasratesetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 
@@ -4772,7 +4772,7 @@ static ssize_t alsintegtimesetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 
@@ -4845,7 +4845,7 @@ static ssize_t alsmeasrateregsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 
@@ -4924,7 +4924,7 @@ static ssize_t partid_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4946,7 +4946,7 @@ static ssize_t revid_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4968,7 +4968,7 @@ static ssize_t partidreg_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -4990,7 +4990,7 @@ static ssize_t manuid_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5012,7 +5012,7 @@ static ssize_t psdatastatus_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5034,7 +5034,7 @@ static ssize_t psinterruptstatus_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5056,7 +5056,7 @@ static ssize_t alsdatastatus_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5078,7 +5078,7 @@ static ssize_t alsinterruptstatus_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5100,7 +5100,7 @@ static ssize_t alsgainstatus_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5122,7 +5122,7 @@ static ssize_t alsdatavaliditystatus_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5145,7 +5145,7 @@ static ssize_t alspsstatusreg_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 
@@ -5168,7 +5168,7 @@ static ssize_t alsch0ch1rawcalc_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d %d %d\n",
+	ret = snprintf(buf, (int)sizeof(buf), "%d %d %d\n",
 			rdback_val1, rdback_val2, rdback_val3);
 
 	return ret;
@@ -5192,7 +5192,7 @@ static ssize_t setpsoffset_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5288,7 +5288,7 @@ static ssize_t interruptmodesetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5334,7 +5334,7 @@ static ssize_t interruptpolarsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5380,7 +5380,7 @@ static ssize_t interruptsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5458,7 +5458,7 @@ static ssize_t interruptpersistsetup_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d\n", rdback_val);
+	ret = snprintf(buf, (int)sizeof(buf), "%d\n", rdback_val);
 
 	return ret;
 }
@@ -5729,7 +5729,7 @@ static ssize_t dispalsthrerange_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d %d\n", rdback_lo, rdback_hi);
+	ret = snprintf(buf, (int)sizeof(buf), "%d %d\n", rdback_lo, rdback_hi);
 
 	return ret;
 }
@@ -5901,7 +5901,7 @@ static ssize_t disppsthrerange_show(struct device *dev,
 		return -EPERM;
 	}
 
-	ret = snprintf(buf, sizeof(buf), "%d %d\n", rdback_lo, rdback_hi);
+	ret = snprintf(buf, (int)sizeof(buf), "%d %d\n", rdback_lo, rdback_hi);
 
 	return ret;
 }
